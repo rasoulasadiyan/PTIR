@@ -3,125 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persian Text-Image Retrieval Demo</title>
+    <title>Persian Text-Image Retrieval: A Framework Based on Image Captioning and Scalable Vector Search</title>
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General body font and style */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header font style */
+        h1{
+            font-family: 'Lora', serif;
+            color: #ffffff;
+        }
+        h2, h3 {
+            font-family: 'Lora', serif;
+            color: rgb(22, 21, 2);
+        }
+
+        /* Zoom effect for images */
+        .img-zoom {
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .img-zoom:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal styles */
+        .modal-dialog {
+            max-width: 90%;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+
+        .modal-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Header styling with gradient */
+        header {
+            background: linear-gradient(135deg, #2980b9, #8e44ad); /* Gradient background */
+            padding: 50px 0;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        header h2 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+
+        header h1 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .social-links .btn {
+            margin-right: 10px;
+        }
+
+        .content h2 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        .content p {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Styling for the abstract and sections */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">PTIR Demo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#introduction">Introduction</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#datasets">Datasets</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#models">Models</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#approach">Our Approach</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#demo">Demo Images</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/yourusername/ptir-demo" target="_blank"><i class="fab fa-github"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://huggingface.co/yourusername" target="_blank"><i class="fab fa-huggingface"></i></a>
-                </li>
-            </ul>
+    <header class="header">
+        <div class="container">
+            <h1 class="mt-5 mb-4">Persian Text-Image Retrieval: A Framework Based on Image Captioning and Scalable Vector Search</h1>
+            <h2>(This page will be updated)</h2>
+            <div class="social-links text-center mb-5">
+                <a href="https://github.com/rasoulasadiyan/PTIR" target="_blank" class="btn btn-primary mr-2"><i class="fab fa-github"></i> GitHub</a>
+                <!-- <a href="https://huggingface.co/yourusername/yourmodel" target="_blank" class="btn btn-secondary"><i class="fab fa-huggingface"></i> Hugging Face</a> -->
+            </div>
         </div>
-    </nav>
-
-    <header class="jumbotron text-center">
-        <h1 class="display-4">Persian Text-Image Retrieval (PTIR)</h1>
-        <p class="lead">Discover how our system retrieves images based on Persian text.</p>
     </header>
-
-    <main class="container">
-        <section id="introduction" class="mt-5">
-            <h2>Introduction</h2>
-            <p>Insert your introduction here...</p>
-        </section>
-
-        <section id="datasets" class="mt-5">
-            <h2>Datasets</h2>
-            <p>Insert details about your datasets here...</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="images/dataset1.jpg" alt="Dataset 1" class="img-fluid">
-                    <p class="mt-2">Description of Dataset 1</p>
+    <main class="content">
+        <div class="container">
+            <section class="mb-5">
+                <h2 class="text-center">Abstract</h2>
+                <p class="lead">In recent years, Vision-Language Models (VLMs) have achieved remarkable success in connecting the domains of vision and language. Models such as CLIP and ALIGN, trained on vast datasets of image-text pairs, have enabled highly efficient cross-modal retrieval systems. However, these breakthroughs have primarily been limited to English and a few other widely spoken languages. Persian, is among the underserved languages in this regard, with limited resources and tools available for advanced tasks such as image-text retrieval.</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">General Works I Was Done in the Paper</h2>
+                <p class="lead">While existing multilingual VLMs attempt to bridge the gap for non-English languages, their performance in Persian remains suboptimal due to the lack of high-quality datasets and models tailored for the language. Specifically, there are no comprehensive Persian text-image retrieval systems that can effectively handle detailed queries or retrieve relevant images in diverse real-world scenarios.</p>
+                <p class="lead">Furthermore, widely adopted systems like CLIP are challenging to fine-tune or adapt to such specialized domains due to their reliance on large-scale datasets and resources unavailable in Persian.</p>
+                <p class="lead">This paper proposes a pioneering approach to Persian Text-Image Retrieval (PTIR), marking a significant advancement in the field. Our contributions include:</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">Project Demo</h2>
+                <div class="text-center">
+                    <img src="assets/demo.gif" alt="Project Demo" class="img-fluid">
+                    <p class="mt-3"><em>Description of the demo: Briefly explain what the demo showcases.</em></p>
                 </div>
-                <div class="col-md-4">
-                    <img src="images/dataset2.jpg" alt="Dataset 2" class="img-fluid">
-                    <p class="mt-2">Description of Dataset 2</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">A. Dataset Creation</h2>
+                <p class="lead">We introduce a diverse dataset of 1.2 million high-quality Persian image-caption pairs, curated from multiple sources and enriched through translation and human editing.</p>
+                <h3 class="text-center">Dataset Analysis, Caption Length, etc.</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <img src="assets/train_val_dis_len.png" alt="Dataset Analysis" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="/home/rasoul/Documents/rag/scripts/ptir-git/PTIR/docs/assets/train_val_dis_len.png">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="assets/Train Word Cloud.png" alt="Caption Length Distribution" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="/home/rasoul/Documents/rag/scripts/ptir-git/PTIR/docs/assets/Train Word Cloud.png">
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="assets/Train Word Cloud.png" alt="Sample Captions" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="/home/rasoul/Documents/rag/scripts/ptir-git/PTIR/docs/assets/Train Word Cloud.png">
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="images/dataset3.jpg" alt="Dataset 3" class="img-fluid">
-                    <p class="mt-2">Description of Dataset 3</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">B. Model Development</h2>
+                <p class="lead">We train a Persian image captioning model using a vision-encoder-decoder architecture, leveraging state-of-the-art vision-encoders and Persian-specific text-decoders.</p>
+                <h3 class="text-center">Model Architecture and Training Process</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <img src="assets/model_architecture.png" alt="Model Architecture" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/model_architecture.png">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <img src="assets/training_process.png" alt="Training Process" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/training_process.png">
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="models" class="mt-5">
-            <h2>Models</h2>
-            <p>Insert details about your models here...</p>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Model 1</h3>
-                    <p>Details about Model 1</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">C. Retrieval Framework</h2>
+                <p class="lead">We implement a retrieval system that converts captions into vector embeddings stored in a vector database, enabling efficient similarity search for Persian text queries.</p>
+                <h3 class="text-center">Retrieval Process and Vector Database</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <img src="assets/PTIR.png" alt="Retrieval Process" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="/home/rasoul/Documents/rag/scripts/ptir-git/PTIR/docs/assets/PTIR.png">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <img src="docs/assets/intro pic.png" alt="Vector Database" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="docs/assets/intro pic.png">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Model 2</h3>
-                    <p>Details about Model 2</p>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">D. Evaluation Metrics and Dataset</h2>
+                <p class="lead">We provide a new evaluation dataset and define novel metrics such as Hit@k for assessing retrieval performance, contributing significantly to the broader field of image retrieval benchmarking.</p>
+                <h3 class="text-center">Evaluation Results and Metrics</h3>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <img src="assets/t3.png" alt="Evaluation Results" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t3.png">
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <img src="assets/t1.png" alt="Hit@k Metric" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="/home/rasoul/Documents/rag/scripts/ptir-git/PTIR/docs/assets/t1.png">
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <img src="assets/t2.png" alt="Retrieval Performance" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t2.png">
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <img src="assets/t4.png" alt="Benchmark Comparison" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t4.png">
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="approach" class="mt-5">
-            <h2>Our Approach</h2>
-            <p>Insert an explanation of your approach here...</p>
-            <div class="row">
-                <div class="col-md-12">
-                    <img src="images/approach.png" alt="Approach Diagram" class="img-fluid">
-                </div>
-            </div>
-        </section>
-
-        <section id="demo" class="mt-5">
-            <h2>Demo Images</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="images/demo1.jpg" alt="Demo Image 1" class="img-fluid">
-                    <p class="mt-2">Description of Demo Image 1</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="images/demo2.jpg" alt="Demo Image 2" class="img-fluid">
-                    <p class="mt-2">Description of Demo Image 2</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="images/demo3.jpg" alt="Demo Image 3" class="img-fluid">
-                    <p class="mt-2">Description of Demo Image 3</p>
-                </div>
-            </div>
-        </section>
+            </section>
+            <section class="mb-5">
+                <h2 class="text-center">E. Conclusion and Future Work</h2>
+                <p class="lead">Our work contributes a novel Persian Text-Image Retrieval framework that advances the state of the art for this underrepresented language. We demonstrate the system’s effectiveness in real-world scenarios and envision future improvements, including broader dataset expansions and optimizations for real-time applications.</p>
+            </section>
+        </div>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2023 Your Name</p>
+    <!-- Modal for Image Zoom -->
+    <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" class="img-fluid" id="zoomedImage" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-dark text-white">
+        <p>&copy; 2024 Persian Text-Image Retrieval Project | Developed by Rasoul Asadiyan</p>
+        <p><a href="https://github.com/rasoulasadiyan/PTIR" target="_blank" class="text-white">Visit GitHub for Source Code</a></p>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+    <script>
+        // Image zoom modal functionality
+        $(document).ready(function() {
+            $('.img-zoom').click(function() {
+                var imgSrc = $(this).data('src');
+                $('#zoomedImage').attr('src', imgSrc);
+                $('#imgModal').modal('show');
+            });
+
+            // Close modal on background click
+            $('#imgModal').on('hidden.bs.modal', function () {
+                $('#zoomedImage').attr('src', '');
+            });
+        });
+    </script>
 </body>
 </html>

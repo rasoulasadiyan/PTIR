@@ -1,30 +1,89 @@
+/* General body font and style */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header font style */
+h1, h2, h3 {
+    font-family: 'Lora', serif;
+    color: #ffffff;
+}
+
+/* Zoom effect for images */
+.img-zoom {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.img-zoom:hover {
+    transform: scale(1.1);
+}
+
+/* Modal styles */
+.modal-dialog {
+    max-width: 90%;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
     background-color: #f8f9fa;
 }
 
-.jumbotron {
-    background-color: #e9ecef;
-    padding: 4rem 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.3rem;
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Header styling with gradient */
+header {
+    background: linear-gradient(135deg, #2980b9, #8e44ad); /* Gradient background */
+    padding: 50px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+header h2 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+header h1 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.social-links .btn {
+    margin-right: 10px;
+}
+
+.content h2 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+}
+
+.content p {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Styling for the abstract and sections */
 section {
-    margin-bottom: 3rem;
+    margin-bottom: 40px;
 }
 
-h2 {
-    color: #333;
+.text-center {
+    text-align: center;
 }
 
-img {
-    border-radius: 0.3rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Footer styling */
 footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
 }
