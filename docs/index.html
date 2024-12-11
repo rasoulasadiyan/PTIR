@@ -3,45 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persian Text-Image Retrieval: A Framework Based on Image Captioning and Scalable Vector Search</title>
-    <!-- Google Fonts for better typography -->
+    <title>PTIR: Persian Text-Image Retrieval Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* General body font and style */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f7fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;  /* Changed to Open Sans */
+            background-color: #fcfbf8;
+            color: #252525;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
         }
-
-        /* Header font style */
-        h1{
-            font-family: 'Lora', serif;
+    
+        h1 {
+            font-family: 'Merriweather', serif;  /* Changed to Merriweather */
             color: #ffffff;
+            font-size: 2.5rem;  /* Reduced size */
+            margin-bottom: 0.5rem;
         }
+    
         h2, h3 {
-            font-family: 'Lora', serif;
+            font-family: 'Merriweather', serif;  /* Changed to Merriweather */
             color: rgb(22, 21, 2);
+            font-size: 2rem;  /* Reduced size */
+            margin-bottom: 0.5rem;
         }
-
-        /* Zoom effect for images */
+    
+        p {
+            font-size: 1rem;  /* Smaller font size for body text */
+        }
+    
         .img-zoom {
             cursor: pointer;
-            transition: transform 0.25s ease;
+            transition: transform 0.2s ease;  /* Slightly faster transition */
         }
-
+    
         .img-zoom:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);  /* Slightly smaller zoom effect */
         }
-
-        /* Modal styles */
+    
         .modal-dialog {
-            max-width: 90%;
-            margin: 1.75rem auto;
+            max-width: 80%;
+            margin: 1rem auto;
         }
 
         .modal-content {
@@ -54,13 +61,12 @@
             align-items: center;
         }
 
-        /* Header styling with gradient */
         header {
-            background: linear-gradient(135deg, #2980b9, #8e44ad); /* Gradient background */
+            background: linear-gradient(135deg, #2980b9, #8e44ad);
             padding: 50px 0;
             color: white;
             text-align: center;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
 
         header h2 {
@@ -88,7 +94,6 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Styling for the abstract and sections */
         section {
             margin-bottom: 40px;
         }
@@ -96,139 +101,202 @@
         .text-center {
             text-align: center;
         }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .img-caption {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .github-button {
+            background-color: #525151;
+            color: rgb(255, 255, 255);
+        }
+        .github-button:hover {
+            background-color: #000000;
+        }
+        .huggingface-button {
+            background-color: #f8e90e;
+            color: rgb(26, 25, 25);
+        }
+        .huggingface-button:hover {
+            background-color: #ffd000;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            background-size: cover;
+        }
+        .github-icon {
+            background-image: url('https://simpleicons.org/icons/github.svg');
+            filter: invert(1);
+        }
+        .huggingface-icon {
+            background-image: url('https://huggingface.co/favicon.ico');
+        }
+        
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="container">
-            <h1 class="mt-5 mb-4">Persian Text-Image Retrieval: A Framework Based on Image Captioning and Scalable Vector Search</h1>
-            <h2>(This page will be updated)</h2>
-            <div class="social-links text-center mb-5">
-                <a href="https://github.com/rasoulasadiyan/PTIR" target="_blank" class="btn btn-primary mr-2"><i class="fab fa-github"></i> GitHub</a>
-                <!-- <a href="https://huggingface.co/yourusername/yourmodel" target="_blank" class="btn btn-secondary"><i class="fab fa-huggingface"></i> Hugging Face</a> -->
+        <div class="container text-center">
+            <h1 class="mt-4 mb-3 text-white display-4">Persian Text-Image Retrieval</h1>
+            <p class="text-white-75 mb-3 lead">A Framework Based on Image Captioning and Scalable Vector Search</p>
+            <div class="button-container">
+                <a href="https://github.com/your-repo" target="_blank">
+                    <button class="button github-button">
+                        <span class="icon github-icon"></span>GitHub Repo
+                    </button>
+                </a>
+                <a href="https://huggingface.co/datasets/your-dataset" target="_blank">
+                    <button class="button huggingface-button">
+                        <span class="icon huggingface-icon"></span>Hugging Face Dataset
+                    </button>
+                </a>
             </div>
         </div>
     </header>
+
     <main class="content">
         <div class="container">
-            <section class="mb-5">
-                <h2 class="text-center">Abstract</h2>
+            <section class="mb-3">
+                <h2 class="text-center">Intro</h2>
                 <p class="lead">In recent years, Vision-Language Models (VLMs) have achieved remarkable success in connecting the domains of vision and language. Models such as CLIP and ALIGN, trained on vast datasets of image-text pairs, have enabled highly efficient cross-modal retrieval systems. However, these breakthroughs have primarily been limited to English and a few other widely spoken languages. Persian, is among the underserved languages in this regard, with limited resources and tools available for advanced tasks such as image-text retrieval.</p>
             </section>
-            <section class="mb-5">
-                <h2 class="text-center">General Works I Was Done in the Paper</h2>
+
+            <section class="mb-3">
+                <div class="text-center video-title-container">
+                    <h2>PTIR Demo</h2> <!-- Title above the video -->
+                </div>
+                <div class="text-center">
+                    <video width="1080" height="720" controls>
+                        <source src="assets/ptir.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+            <section class="mb-3">
+                <h2 class="text-center">General Works in the Paper</h2>
                 <p class="lead">While existing multilingual VLMs attempt to bridge the gap for non-English languages, their performance in Persian remains suboptimal due to the lack of high-quality datasets and models tailored for the language. Specifically, there are no comprehensive Persian text-image retrieval systems that can effectively handle detailed queries or retrieve relevant images in diverse real-world scenarios.</p>
                 <p class="lead">Furthermore, widely adopted systems like CLIP are challenging to fine-tune or adapt to such specialized domains due to their reliance on large-scale datasets and resources unavailable in Persian.</p>
                 <p class="lead">This paper proposes a pioneering approach to Persian Text-Image Retrieval (PTIR), marking a significant advancement in the field. Our contributions include:</p>
             </section>
-            <section class="mb-5">
-                <h2 class="text-center">Project Demo</h2>
-                <div class="text-center">
-                    <img src="assets/demo.gif" alt="Project Demo" class="img-fluid">
-                    <p class="mt-3"><em>Description of the demo: Briefly explain what the demo showcases.</em></p>
-                </div>
-            </section>
+
             <section class="mb-5">
                 <h2 class="text-center">A. Dataset Creation</h2>
                 <p class="lead">We introduce a diverse dataset of 1.2 million high-quality Persian image-caption pairs, curated from multiple sources and enriched through translation and human editing.</p>
-                <h3 class="text-center">Dataset Analysis, Caption Length, etc.</h3>
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <img src="assets/train_val_dis_len.png" alt="Dataset Analysis" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/train_val_dis_len.png">
+                        <div class="img-caption">Comparison Train-Val caption lengths</div>
                     </div>
                     <div class="col-md-4 mb-4">
                         <img src="assets/Train Word Cloud.png" alt="Caption Length Distribution" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/Train Word Cloud.png">
+                        <div class="img-caption">Train Word Cloud</div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <img src="assets/Train Word Cloud.png" alt="Sample Captions" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/Train Word Cloud.png">
+                        <img src="assets/Vlidation Word Cloud.png" alt="Sample Captions" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/Vlidation Word Cloud.png">
+                        <div class="img-caption">Vlidation Word Cloud</div>
                     </div>
                 </div>
             </section>
-            <section class="mb-5">
+
+            <section class="mb-2">
                 <h2 class="text-center">B. Model Development</h2>
                 <p class="lead">We train a Persian image captioning model using a vision-encoder-decoder architecture, leveraging state-of-the-art vision-encoders and Persian-specific text-decoders.</p>
-                <h3 class="text-center">Model Architecture and Training Process</h3>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <img src="assets/model_architecture.png" alt="Model Architecture" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/model_architecture.png">
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <img src="assets/training_process.png" alt="Training Process" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/training_process.png">
-                    </div>
+                <div class="text-center">
+                    <img src="assets/t3.png" alt="Model Architecture" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t3.png">
+                    <div class="img-caption">Ours model comparison</div>
                 </div>
             </section>
-            <section class="mb-5">
+
+            <section class="mb-2">
                 <h2 class="text-center">C. Retrieval Framework</h2>
                 <p class="lead">We implement a retrieval system that converts captions into vector embeddings stored in a vector database, enabling efficient similarity search for Persian text queries.</p>
-                <h3 class="text-center">Retrieval Process and Vector Database</h3>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <img src="assets/PTIR.png" alt="Retrieval Process" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/PTIR.png">
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <img src="docs/assets/intro pic.png" alt="Vector Database" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="docs/assets/intro pic.png">
-                    </div>
+                <div class="text-center">
+                    <img src="assets/PTIR.png" alt="Retrieval Process" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/PTIR.png">
+                    <div class="img-caption">Retrieval Process</div>
                 </div>
             </section>
+
             <section class="mb-5">
-                <h2 class="text-center">D. Evaluation Metrics and Dataset</h2>
+                <h2 class="text-center">D. Retrieval Evaluation</h2>
                 <p class="lead">We provide a new evaluation dataset and define novel metrics such as Hit@k for assessing retrieval performance, contributing significantly to the broader field of image retrieval benchmarking.</p>
-                <h3 class="text-center">Evaluation Results and Metrics</h3>
                 <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <img src="assets/t3.png" alt="Evaluation Results" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t3.png">
+                    <div class="col-md-5 mb-4">
+                        <img src="assets/t1.png" alt="Evaluation Results" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t1.png">
+                        <div class="img-caption">Evaluation Results</div>
                     </div>
-                    <div class="col-md-3 mb-4">
-                        <img src="assets/t1.png" alt="Hit@k Metric" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t1.png">
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <img src="assets/t2.png" alt="Retrieval Performance" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t2.png">
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <img src="assets/t4.png" alt="Benchmark Comparison" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t4.png">
+                    <div class="col-md-5 mb-4">
+                        <img src="assets/t2.png" alt="Hit@k Metric" class="img-fluid img-zoom" data-toggle="modal" data-target="#imgModal" data-src="assets/t2.png">
+                        <div class="img-caption">Hit@k Metric</div>
                     </div>
                 </div>
             </section>
+
             <section class="mb-5">
-                <h2 class="text-center">E. Conclusion and Future Work</h2>
+                <h2 class="text-center">E. Future Work</h2>
                 <p class="lead">Our work contributes a novel Persian Text-Image Retrieval framework that advances the state of the art for this underrepresented language. We demonstrate the system’s effectiveness in real-world scenarios and envision future improvements, including broader dataset expansions and optimizations for real-time applications.</p>
             </section>
         </div>
     </main>
 
-    <!-- Modal for Image Zoom -->
     <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Image Zoom</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
-                    <img src="" class="img-fluid" id="zoomedImage" />
+                    <img src="" id="modalImage" alt="Modal Image" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 bg-dark text-white">
-        <p>&copy; 2024 Persian Text-Image Retrieval Project | Developed by Rasoul Asadiyan</p>
-        <p><a href="https://github.com/rasoulasadiyan/PTIR" target="_blank" class="text-white">Visit GitHub for Source Code</a></p>
+    <footer>
+        <div class="container text-center">
+            <p class="mb-0">© 2024 PTIR  |  Rasoul Asadian</p>
+        </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Image zoom modal functionality
         $(document).ready(function() {
             $('.img-zoom').click(function() {
-                var imgSrc = $(this).data('src');
-                $('#zoomedImage').attr('src', imgSrc);
-                $('#imgModal').modal('show');
-            });
-
-            // Close modal on background click
-            $('#imgModal').on('hidden.bs.modal', function () {
-                $('#zoomedImage').attr('src', '');
+                var src = $(this).data('src');
+                $('#modalImage').attr('src', src);
             });
         });
     </script>
