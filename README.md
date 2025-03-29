@@ -4,4 +4,4 @@ Evaluation Dataset derived from the COCO dataset, this benchmark includes 117,00
 The [COCO-PIC dataset](https://huggingface.co/datasets/rasoulub/coco-pic) is also available in the Hugging Face Datasets.
 
 ## Project Demo
-<video src="[PTIR_D4.mp4](https://github.com/rasoulasadiyan/PTIR/raw/master/PTIR_D4.mp4)" controls width="500"></video>
+![PTIR](PTIR_D3.gif)
